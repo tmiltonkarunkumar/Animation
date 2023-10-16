@@ -46,9 +46,10 @@ class EasedServo:
 
 # Do if we're called directly
 if __name__ == '__main__':
-    my_servo = EasedServo(2)
+    # my_servo = EasedServo(2)
     my_servo = EasedServo(servo2040.SERVO_1)
-    # my_servo.ease_to(-90, 2000, easing.easeInOutCubic)
+
+    my_servo.ease_to(-90, 2000, easing.easeInOutCubic)
 
     while my_servo._isMoving:
         my_servo.update()
