@@ -1,7 +1,7 @@
 # Object heirarchy sketch for EasedServo class
 
 from servo import Servo, servo2040
-import easing-functions as easing
+import easingfunctions as easing
 import time
 
 # Subclass of Servo
@@ -11,7 +11,7 @@ class EasedServo:
     # TODO: This should probably inherit from Servo rather than wrap it, but I'm rusty on Python syntax.
     # TODO: @property and @setter decorators work in Micropython now, I think? Would be neater.
 
-    def __init__(self, pin, angle=90)
+    def __init__(self, pin, angle=90):
         """Basic constructor. Creates a Servo object and sets the angle to the given value, defaulting to 90."""
         self._servo = Servo(pin)
         self.angle = angle
@@ -43,18 +43,20 @@ class EasedServo:
 
 # Do if we're called directly
 if __name__ == '__main__':
+    # my_servo = EasedServo(2)
     my_servo = EasedServo(servo2040.SERVO_1)
-    my_servo.ease_to(0, 1000)
+    my_servo.ease_to(-90, 1000)
 
     while my_servo._isMoving:
         my_servo.update()
         time.sleep(0.01)
 
-    my_servo.ease_to(180, 500, easing.ease_in_out_quad)
+    time.sleep_ms(200)
+    my_servo.ease_to(180, 5000, easing.easeOutExpo)
 
     while my_servo._isMoving:
         my_servo.update()
-        time.sleep(0.01)
+        time.sleep(0.005)
 
     print("Done!")
 
