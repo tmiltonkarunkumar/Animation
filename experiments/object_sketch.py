@@ -5,7 +5,7 @@ import easingfunctions as easing
 import time
 
 # Subclass of Servo
-class EasedServo:
+class EasedServo():
     """Subclass of Servo object to support easing functions."""
 
     # TODO: This should probably inherit from Servo rather than wrap it, but I'm rusty on Python syntax.
